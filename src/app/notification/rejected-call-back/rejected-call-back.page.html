@@ -1,0 +1,31 @@
+<ion-content>
+  <ion-card *ngFor="let call of callBack" [routerLink]="['/call-back-details']"
+    [queryParams]="{ callbackId: call.id, createdLeadId: call.createdLeadId, convertedLeadId: call.convertedLeadId, comments: call.comments}">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-label>{{call.incidentNumber}}</ion-label>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <span style="float: left;">
+        <ion-icon name="calendar"></ion-icon>
+        <!-- <ion-icon name="location-outline"></ion-icon> -->
+        {{call.callBackDate | date}}
+      </span>
+      <span style="float: right;">
+        <!-- <ion-icon name="call-outline"></ion-icon> -->
+        <ion-icon name="time"></ion-icon>
+        {{call.callBackTime | date:'h:mm a '}}
+      </span>
+      <!-- <span style="float: left;">
+          <ion-icon name="mail-outline"></ion-icon>
+          {{lead.mailId}}
+        </span>
+        <span style="float: right;">
+          <ion-icon name="person-outline"></ion-icon>
+          {{lead.leadAssigned}}
+        </span> -->
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

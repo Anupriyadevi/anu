@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-img class="header" slot="end" src="assets/images/smm_logo.png"></ion-img>
+    <ion-title>Create Customer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <!--   
+    <div>
+<div id="crumbs">
+      <ul>
+        <li><a href="#">Step 3</a></li>
+      </ul>
+    </div>
+
+    </div> -->
+
+    <div class="column">
+
+
+      <!--  -->
+
+      <div></div><br>
+      <form name="leadForm" [formGroup]="leadForm">
+        <ion-item style="width: 100%;">
+
+
+          <ion-label position="floating">PO From Customer</ion-label>
+          <ion-input formControlName="purchaseOrder"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Product Name</ion-label>
+          <ion-input formControlName="productName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Delivery Address</ion-label>
+          <ion-input formControlName="deliveryAddress"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Quantity</ion-label>
+          <!-- <ion-input formControlName="quantity"></ion-input> -->
+          <ion-select interface="popover" formControlName="quantity">
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="6">6</ion-select-option>
+            <ion-select-option value="7">7</ion-select-option>
+            <ion-select-option value="8">8</ion-select-option>
+            <ion-select-option value="9">9</ion-select-option>
+            <ion-select-option value="10">10</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Advance Paid</ion-label>
+          <ion-input (ionChange)="remainingCalc($event)" formControlName="advance"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Remaining amount</ion-label>
+          <ion-input [(ngModel)]="remaining" formControlName="remaining"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Payment</ion-label>
+          <!-- <ion-input> -->
+          <ion-select interface="popover" formControlName="paymentType">
+            <ion-select-option value="Cash">Cash</ion-select-option>
+            <ion-select-option value="Cheque">Cheque</ion-select-option>
+            <ion-select-option value="Cash + Cheque">Cash + Cheque</ion-select-option>
+            <ion-select-option value="Online Payment">Online Payment</ion-select-option>
+          </ion-select>
+          <!-- </ion-input> -->
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Delivery Type/Time</ion-label>
+          <!-- <ion-input formControlName="deliveryTypeTime"></ion-input> -->
+          <ion-select interface="popover" formControlName="deliveryTypeTime">
+            <ion-select-option value="On Road">On Road</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Technician Lead/Commisioning</ion-label>
+          <ion-input formControlName="techLead">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Service Report</ion-label>
+          <ion-input formControlName="serviceReport"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Feedback</ion-label>
+          <ion-select interface="popover" formControlName="customerFeedback">
+            <ion-select-option value="Good">Good</ion-select-option>
+            <ion-select-option value="excellent">excellent</ion-select-option>
+            <ion-select-option value="Poor">Poor</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+
+        <div class="btn">
+
+          <!-- <ion-button shape="round" routerLink="/convert-lead" routerDirection="forward"><ion-icon name="arrow-undo-circle-outline"></ion-icon>Cancel </ion-button> -->
+          <ion-button shape="round" (click)="submit()">Submit <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </ion-button>
+          <!-- <ion-button shape="round">Previous <ion-icon name="chevron-forward-outline"></ion-icon></ion-button> -->
+        </div>
+
+      </form>
+    </div>
+
+  </ion-card>
+
+</ion-content>

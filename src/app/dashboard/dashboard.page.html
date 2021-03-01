@@ -1,0 +1,128 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-img slot="end" src="assets/images/smm_logo.png"></ion-img>
+    <ion-title>DashBoard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="12">
+        <ion-card [routerLink]="['/existing-lead']">
+          <ion-card-header>
+            <ion-card-subtitle>Total No. of Leads created</ion-card-subtitle>
+            <ion-card-title>Leads
+              <span style="float: right;">{{leadsCount}}</span>
+            </ion-card-title>
+          </ion-card-header>
+
+        </ion-card>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="12">
+        <ion-card [routerLink]="['/existing-customers']">
+          <ion-card-header>
+            <ion-card-subtitle>Total No. of customers created</ion-card-subtitle>
+            <ion-card-title>Customers
+              <span style="float: right;">{{customerCount}}</span>
+            </ion-card-title>
+          </ion-card-header>
+
+        </ion-card>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="12">
+        <ion-card [routerLink]="['/notification']">
+          <ion-card-header>
+            <ion-card-subtitle>Total No. of call backs booked</ion-card-subtitle>
+            <ion-card-title>Total Callbacks
+              <span style="float: right;">{{allCallbackCount}}</span>
+            </ion-card-title>
+          </ion-card-header>
+
+        </ion-card>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="12">
+        <ion-card [routerLink]="['/notification']">
+          <ion-card-header>
+            <ion-card-subtitle>Total No. of pending call backs </ion-card-subtitle>
+            <ion-card-title>Pending Callbacks
+              <span style="float: right;">{{pendingCallBackCount}}</span>
+            </ion-card-title>
+          </ion-card-header>
+
+        </ion-card>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="12">
+        <ion-card [routerLink]="['/notification/completed']">
+          <ion-card-header>
+            <ion-card-subtitle>Total No. of Completed call backs </ion-card-subtitle>
+            <ion-card-title>Completed Callbacks
+              <span style="float: right;">{{completedCallbackCount}}</span>
+            </ion-card-title>
+          </ion-card-header>
+
+        </ion-card>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="12">
+        <ion-card [routerLink]="['/feedback-list']">
+          <ion-card-header>
+            <ion-card-subtitle>Total No. of feedbacks </ion-card-subtitle>
+            <ion-card-title>Feedbacks
+              <span style="float: right;">{{feedbackCount}}</span>
+            </ion-card-title>
+          </ion-card-header>
+
+        </ion-card>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="12">
+        <ion-card [routerLink]="['/hotleads']">
+          <ion-card-header>
+            <ion-card-subtitle>Total No. of Hot leads </ion-card-subtitle>
+            <ion-card-title>Hot Leads
+              <span style="float: right;">{{hotLeadCount}}</span>
+            </ion-card-title>
+          </ion-card-header>
+
+        </ion-card>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="12">
+        <ion-card [routerLink]="['/cold-leads']">
+          <ion-card-header>
+            <ion-card-subtitle>Total No. of cold leads </ion-card-subtitle>
+            <ion-card-title>Cold Leads
+              <span style="float: right;">{{coldLeadCount}}</span>
+            </ion-card-title>
+          </ion-card-header>
+
+        </ion-card>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="12">
+        <ion-card [routerLink]="['/warm-leads']">
+          <ion-card-header>
+            <ion-card-subtitle>Total No. of warm leads </ion-card-subtitle>
+            <ion-card-title>Warm Leads
+              <span style="float: right;">{{warmLeadCount}}</span>
+            </ion-card-title>
+          </ion-card-header>
+
+        </ion-card>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="12">
+        <ion-card [routerLink]="['/lost-leads']">
+          <ion-card-header>
+            <ion-card-subtitle>Total No. of lost leads </ion-card-subtitle>
+            <ion-card-title>Lost Leads
+              <span style="float: right;">{{lostLeadCount}}</span>
+            </ion-card-title>
+          </ion-card-header>
+
+        </ion-card>
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

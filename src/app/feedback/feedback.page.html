@@ -1,0 +1,71 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-img class="header" slot="end" src="assets/images/smm_logo.png"></ion-img>
+    <ion-title>Feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <form name="feedBackForm" [formGroup]="feedBackForm">
+      <ion-item>
+        <ion-label position="floating">Customer Name <span class="warning">*</span></ion-label>
+        <ion-input formControlName="customerName"></ion-input>
+      </ion-item>
+      <div *ngIf="!feedBackForm.controls.customerName.valid &&
+        feedBackForm.controls.customerName.touched" class="validator-error">
+        Customer Name is mandatory
+      </div>
+      <ion-item>
+        <ion-label position="floating">Company Name <span class="warning">*</span></ion-label>
+        <ion-input formControlName="companyName"></ion-input>
+      </ion-item>
+      <div *ngIf="!feedBackForm.controls.companyName.valid &&
+        feedBackForm.controls.companyName.touched" class="validator-error">
+        Company Name is mandatory
+      </div>
+      <ion-item>
+        <ion-label position="floating">Email Id <span class="warning">*</span></ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      <div *ngIf="!feedBackForm.controls.email.valid &&
+        feedBackForm.controls.email.touched" class="validator-error">
+        Email Id is mandatory
+      </div>
+      <ion-item>
+        <ion-label position="floating">Mobile No. <span class="warning">*</span></ion-label>
+        <ion-input formControlName="mobileNo"></ion-input>
+      </ion-item>
+      <div *ngIf="feedBackForm.controls.mobileNo.errors?.required &&
+        feedBackForm.controls.mobileNo.touched" class="validator-error">
+        Mobile Number is mandatory
+      </div>
+      <div *ngIf="feedBackForm.controls.mobileNo.errors?.minlength  || feedBackForm.controls.mobileNo.errors?.maxlength &&
+        feedBackForm.controls.mobileNo.touched" class="validator-error">
+        Please Enter a valid Mobile Number
+      </div>
+      <ion-item text-wrap>
+        <ion-label text-wrap style="margin-bottom: 10px;" position="stacked">Level of satisfaction with our service</ion-label>
+        <rating formControlName="satisfied" readonly="false" size="default"></rating>
+        <ion-textarea formControlName="satisfiedComments" placeholder="Comments..."></ion-textarea>
+      </ion-item>
+      <ion-item text-wrap class="label">
+        <ion-label text-wrap style="margin-bottom: 10px;" position="stacked">Accessibility of our customer service provided to you </ion-label>
+        <rating formControlName="accessibleManner" readonly="false" size="default"></rating>
+        <ion-textarea formControlName="accessibleMannerComments" placeholder="Comments..."></ion-textarea>
+      </ion-item>
+      <ion-item text-wrap>
+        <ion-label text-wrap style="margin-bottom: 10px;" position="stacked">How smooth have you accessed our service</ion-label>
+        <rating formControlName="problem" readonly="false" size="default"></rating>
+        <ion-textarea formControlName="problemComments" placeholder="Comments..."></ion-textarea>
+      </ion-item>
+      <div class="btn" *ngIf="!id">
+        <ion-button shape="round" [disabled]="feedBackForm.invalid" (click)="submit()">Submit <ion-icon
+            name="checkmark-circle-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </form>
+  </ion-card>
+</ion-content>

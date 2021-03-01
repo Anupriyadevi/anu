@@ -1,0 +1,255 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-img class="header" slot="end" src="assets/images/smm_logo.png"></ion-img>
+    <ion-title>Create Lead</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-card>
+    <div class="column">
+      <div></div><br>
+      <form name="leadForm" [formGroup]="leadForm">
+        <ion-item style="width: 100%;">
+
+
+          <ion-label position="floating">Customer Name<span style="color: red;">*</span></ion-label>
+          <ion-input formControlName="customerName"></ion-input>
+        </ion-item>
+        <div *ngIf="!leadForm.controls.customerName.valid &&
+        leadForm.controls.customerName.touched" class="validator-error">
+              customerName is mandatory
+            </div>
+        <ion-item>
+          <ion-label position="floating">Company Name</ion-label>
+          <ion-input formControlName="companyName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Address Line 1</ion-label>
+          <ion-input formControlName="address"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Country</ion-label>
+          <ion-select interface="popover" (ionChange)="getState($event)" formControlName="country">
+            <ion-select-option *ngFor="let country of countries" [value]="country.name">{{country.name}}</ion-select-option>
+            
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">State</ion-label>
+          <!-- <ion-input formControlName="state"></ion-input> -->
+          <ion-select interface="popover" (ionChange)="getcity($event)" formControlName="state">
+            <ion-select-option *ngFor="let state of states" [value]="state.name">{{state.name}}</ion-select-option>
+            
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">City</ion-label>
+          <!-- <ion-input formControlName="city"></ion-input> -->
+          <ion-select interface="popover"  formControlName="city">
+            <ion-select-option *ngFor="let city of cities" [value]="city.name">{{city.name}}</ion-select-option>
+            
+          </ion-select>
+        </ion-item>
+       
+       
+        <ion-item>
+          <ion-label position="floating">Pincode</ion-label>
+          <ion-input formControlName="pincode"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">GSTIN No</ion-label>
+          <ion-input formControlName="gstIn"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mobile No. 1<span style="color: red;">*</span></ion-label>
+          <ion-input formControlName="mobileNo"></ion-input>
+        </ion-item>
+        <div *ngIf="!leadForm.controls.mobileNo.valid &&
+        leadForm.controls.mobileNo.touched" class="validator-error">
+              mobileNo is mandatory
+            </div>
+        <ion-item>
+          <ion-label position="floating">Mobile No. 2</ion-label>
+          <ion-input formControlName="mobileNo2"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Mail Id 1</ion-label>
+          <ion-input formControlName="mailId"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mail Id 2</ion-label>
+          <ion-input formControlName="mailId2"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Referred By</ion-label>
+          <ion-select interface="popover" formControlName="source">
+            <ion-select-option value="Internal">Internal </ion-select-option>
+            <ion-select-option value="External">External</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- <ion-item>
+      <ion-label position="floating">Breaking Size Variety</ion-label>
+      <ion-input formControlName="breakingSizeVariety"></ion-input>
+    </ion-item>   -->
+
+        <ion-item>
+          <ion-label position="floating"> Machine Type</ion-label>
+          <!-- <ion-input formControlName="excavatorModel"> -->
+          <ion-select interface="popover" formControlName="type">
+            <ion-select-option value="Excavator">Excavator </ion-select-option>
+            <ion-select-option value="Backhoe Loader">Backhoe Loader</ion-select-option>
+          </ion-select>
+          <!-- </ion-input> -->
+
+        </ion-item>
+
+
+        <!-- <ion-item >
+      <ion-label position="floating">Backhoe Loader</ion-label>
+       <ion-select formControlName="backhoeLoader">
+          <ion-select-option value="JCB">JCB</ion-select-option>
+          <ion-select-option value="CAT">CAT</ion-select-option>
+        </ion-select>
+    </ion-item> -->
+
+
+        <ion-item>
+          <ion-label position="floating">Purpose</ion-label>
+          <!-- <ion-input formControlName="purpose"></ion-input> -->
+          <ion-select interface="popover" formControlName="purpose">
+            <ion-select-option value="Primary">Primary</ion-select-option>
+            <ion-select-option value="Secondary">Secondary</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Machine Working Hours/day</ion-label>
+          <ion-input formControlName="machineWorkingHours"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Machine Make & Model</ion-label>
+          <!-- <ion-input formControlName="machineMakeModel"></ion-input> -->
+          <ion-select interface="popover" (ionChange)="setBreaker($event)" formControlName="machineMakeModel">
+            <ion-select-option value="Hyundai R 110">Hyundai R 110</ion-select-option>
+            <ion-select-option value="Hyundai R 140">Hyundai R 140</ion-select-option>
+            <ion-select-option value="Tatahitachi EX 110">Tatahitachi EX 110</ion-select-option>
+            <ion-select-option value="Tatahitachi EX 140">Tatahitachi EX 140</ion-select-option>
+            <ion-select-option value="Tatahitachi EX 130">Tatahitachi EX 130</ion-select-option>
+            <ion-select-option value="Zaxies ZX 140">Zaxies ZX 140</ion-select-option>
+            <ion-select-option value="Kobelco SK 140">Kobelco SK 140</ion-select-option>
+            <ion-select-option value="Komatsu PC 130">Komatsu PC 130</ion-select-option>
+            <ion-select-option value="Hyundai R210">Hyundai R210</ion-select-option>
+            <ion-select-option value="Hyundai 215">Hyundai 215</ion-select-option>
+            <ion-select-option value="Hyundai 220">Hyundai 220</ion-select-option>
+            <ion-select-option value="Sany SY 210">Sany SY 210</ion-select-option>
+            <ion-select-option value="Sany SY 220">Sany SY 220</ion-select-option>
+            <ion-select-option value="Tatahitachi EX 200">Tatahitachi EX 200</ion-select-option>
+            <ion-select-option value="Tatahitachi ZX 210">Tatahitachi ZX 210</ion-select-option>
+            <ion-select-option value="Tatahitachi ZX 220">Tatahitachi ZX 220</ion-select-option>
+            <ion-select-option value="Kobelco SK 210">Kobelco SK 210</ion-select-option>
+            <ion-select-option value="Kobelco SK 220">Kobelco SK 220</ion-select-option>
+            <ion-select-option value="JCB JS 205">JCB JS 205</ion-select-option>
+            <ion-select-option value="JCB JS 215">JCB JS 215</ion-select-option>
+            <ion-select-option value="JCB JS 220">JCB JS 220</ion-select-option>
+            <ion-select-option value="JCB">JCB</ion-select-option>
+            <ion-select-option value="CAT">CAT</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Year</ion-label>
+          <ion-input formControlName="year"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Breaker</ion-label>
+          <ion-select interface="popover" formControlName="existingBreaker">
+            <ion-select-option value="Yes">Yes</ion-select-option>
+            <ion-select-option value="No">No</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Pipelines</ion-label>
+          <ion-select interface="popover" formControlName="pipelines">
+            <ion-select-option value="YES">YES</ion-select-option>
+            <ion-select-option value="NO">NO</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Lead Created By<span style="color: red;">*</span></ion-label>
+          <ion-select interface="popover" formControlName="leadAssigned">
+            <ion-select-option value="MANO - TN">MANO - TN</ion-select-option>
+            <ion-select-option value="AJEES - KL">AJEES - KL</ion-select-option>
+            <ion-select-option value="SWAPNA - KA & AP">SWAPNA - KA & AP</ion-select-option>
+            <ion-select-option value="SHIVA RAMAN - North">SHIVA RAMAN - North</ion-select-option>
+            <ion-select-option value="DHARANI- GENERAL">DHARANI- GENERAL</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="!leadForm.controls.leadAssigned.valid &&
+        leadForm.controls.leadAssigned.touched" class="validator-error">
+              leadAssigned is mandatory
+            </div>
+        <ion-item>
+          <ion-label position="floating">Lead Assigned To<span style="color: red;">*</span></ion-label>
+          <ion-select interface="popover" formControlName="leadAssignedTo">
+            <ion-select-option value="MANO - TN">MANO - TN</ion-select-option>
+            <ion-select-option value="AJEES - KL">AJEES - KL</ion-select-option>
+            <ion-select-option value="SWAPNA - KA & AP">SWAPNA - KA & AP</ion-select-option>
+            <ion-select-option value="SHIVA RAMAN - North">SHIVA RAMAN - North</ion-select-option>
+            <ion-select-option value="DHARANI- GENERAL">DHARANI- GENERAL</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="!leadForm.controls.leadAssignedTo.valid &&
+        leadForm.controls.leadAssignedTo.touched" class="validator-error">
+              leadAssignedTo is mandatory
+            </div>
+        <ion-item>
+          <ion-label position="floating">Product</ion-label>
+          <ion-input formControlName="product"></ion-input>
+        </ion-item>
+        <ion-item >
+          <ion-label position="floating">Customer Status<span style="color: red;">*</span></ion-label>
+          <ion-select interface="popover" formControlName="customerStatus">
+            <ion-select-option value="Hot">Hot</ion-select-option>
+            <ion-select-option value="Warm">Warm</ion-select-option>
+            <ion-select-option value="Cold">Cold</ion-select-option>
+            <ion-select-option value="Lost">Lost</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="!leadForm.controls.customerStatus.valid &&
+        leadForm.controls.customerStatus.touched" class="validator-error">
+              customerStatus is mandatory
+            </div>
+        <ion-item hidden>
+          <ion-label position="floating">Converted Status</ion-label>
+          <ion-input formControlName="convertedStatus"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Recommended Breaker</ion-label>
+          <ion-input formControlName="recommendedBreaker"></ion-input>
+        </ion-item>
+
+        <div class="btn">
+
+
+          <ion-button shape="round" [disabled]='leadForm.invalid' (click)="submit('new')"
+            [routerLink]="['/convert-lead']" [queryParams]="{ lead: leadId}" routerDirection="forward"> Next <ion-icon
+              name="arrow-redo-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-button shape="round" [disabled]='leadForm.invalid' (click)="submit('lead')">Save & Exit <ion-icon
+              name="document-text-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+      </form>
+    </div>
+
+  </ion-card>
+
+
+</ion-content>

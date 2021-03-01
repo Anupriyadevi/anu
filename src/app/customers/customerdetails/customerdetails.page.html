@@ -1,0 +1,188 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-img class="header" slot="end" src="assets/images/smm_logo.png"></ion-img>
+    <ion-title>Customer Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="header">
+    <ion-label class="customer-name">
+      <h2>{{customer?.companyName }}</h2>
+      <h2>{{customer?.customerName }}</h2>
+      <p *ngIf='customer?.mobileNo' (click)="launchDialer(customer.mobileNo)">{{customer?.mobileNo }} </p>
+      <p *ngIf='!customer?.mobileNo'>{{customer?.mobileNo }} </p>
+      <p>{{customer?.mailId }}</p>
+      <p>{{customer?.city }}</p>
+    </ion-label>
+  </div>
+  <div>
+    <ion-item>
+      <ion-label>Customer Address : </ion-label>
+      <ion-label>{{customer?.address }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>City : </ion-label>
+      <ion-label>{{customer?.city }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>State : </ion-label>
+      <ion-label>{{customer?.state }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pincode : </ion-label>
+      <ion-label>{{customer?.pincode }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>GSTIN No. : </ion-label>
+      <ion-label>{{customer?.gstIn }}</ion-label>
+    </ion-item>
+    <ion-item *ngIf='customer?.mobileNo' (click)="launchDialer(customer.mobileNo)">
+      <ion-label>Alt Mobile No. : </ion-label>
+      <ion-label>{{customer?.mobileNo2 }}</ion-label>
+    </ion-item>
+    <ion-item *ngIf='!customer?.mobileNo'>
+      <ion-label>Alt Mobile No. : </ion-label>
+      <ion-label>{{customer?.mobileNo2 }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Alt Mail Id : </ion-label>
+      <ion-label>{{customer?.mailId2 }}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Referred By : </ion-label>
+      <ion-label>{{customer?.source }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Machine Type : </ion-label>
+      <ion-label>{{customer?.type }}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Purpose : </ion-label>
+      <ion-label>{{customer?.purpose }}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Machine Working Hours/day : </ion-label>
+      <ion-label>{{customer?.machineWorkingHours }}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Machine Make & Model : </ion-label>
+      <ion-label>{{customer?.machineMakeModel }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Breaker : </ion-label>
+      <ion-label>{{customer?.existingBreaker }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pipelines : </ion-label>
+      <ion-label>{{customer?.pipelines }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lead created By : </ion-label>
+      <ion-label>{{customer?.leadAssigned }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lead Assigned To: </ion-label>
+      <ion-label>{{customer?.leadAssignedTo }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Product: </ion-label>
+      <ion-label>{{customer?.product }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Recommended Breaker : </ion-label>
+      <ion-label>{{customer?.recommendedBreaker }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Price : </ion-label>
+      <ion-label>{{customer?.ConvertedLeads[0]?.price }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Warranty: </ion-label>
+      <ion-label>{{customer?.ConvertedLeads[0]?.warranty }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Service Frequency: </ion-label>
+      <ion-label>{{customer?.ConvertedLeads[0]?.serviceFrequency }} days</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Follow Up Task: </ion-label>
+      <ion-label>{{customer?.ConvertedLeads[0]?.followUpTask }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Call Back: </ion-label>
+      <ion-label>{{customer?.ConvertedLeads[0]?.callBack }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Call Back Date: </ion-label>
+      <ion-label>{{customer?.ConvertedLeads[0]?.callBackDate }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Call Back status: </ion-label>
+      <ion-label>{{customer?.ConvertedLeads[0]?.callStatus }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Quote / Invoice: </ion-label>
+      <ion-label>{{customer?.ConvertedLeads[0]?.quoteOrInvoice }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>PO From Customer : </ion-label>
+      <ion-label>{{customerProfile?.purchaseOrder}} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Product Name : </ion-label>
+      <ion-label>{{customerProfile?.productName}} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Delivery Address : </ion-label>
+      <ion-label>{{customerProfile?.deliveryAddress}} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Quantity : </ion-label>
+      <ion-label>{{customerProfile?.quantity }} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Advance Paid : </ion-label>
+      <ion-label>{{customerProfile?.advance }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Balance amount : </ion-label>
+      <ion-label>{{customerProfile?.remaining }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Payment Type : </ion-label>
+      <ion-label>{{customerProfile?.paymentType }} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Delivery Type & Time : </ion-label>
+      <ion-label>{{customerProfile?.deliveryTypeTime}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Technician Lead / Commisioning : </ion-label>
+      <ion-label>{{customerProfile?.techLead }} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Service Report : </ion-label>
+      <ion-label>{{customerProfile?.serviceReport }} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Feedback : </ion-label>
+      <ion-label>{{customerProfile?.customerFeedback }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Purchased on : </ion-label>
+      <ion-label>{{customerProfile?.createdAt | date}} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Service Due : </ion-label>
+      <ion-label>{{serviceDue | date}}</ion-label>
+    </ion-item>
+  </div>
+
+</ion-content>

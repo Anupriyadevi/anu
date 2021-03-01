@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-img class="header" slot="end" src="assets/images/smm_logo.png"></ion-img>
+    <ion-title>Call Back</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="upcoming">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label>upcoming</ion-label>
+        <!-- <ion-badge>6</ion-badge> -->
+
+      </ion-tab-button>
+
+      <ion-tab-button tab="completed">
+        <ion-icon name="checkmark-done-outline"></ion-icon>
+        <!-- <ion-icon name="person-circle"></ion-icon> -->
+        <ion-label>completed</ion-label>
+      </ion-tab-button>
+
+      <!-- <ion-tab-button tab="rejected">
+        <ion-icon name="alert-circle-outline"></ion-icon>        <ion-label>Rejected</ion-label>
+      </ion-tab-button> -->
+
+    </ion-tab-bar>
+  </ion-tabs>
+
+
+</ion-content>

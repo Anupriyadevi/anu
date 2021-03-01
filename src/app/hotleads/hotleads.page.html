@@ -1,0 +1,47 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-img class="header" slot="end" src="assets/images/smm_logo.png"></ion-img>
+    <ion-title>Hot Leads</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar>
+  <ion-card *ngFor="let lead of leads">
+    <ion-card-header [routerLink]="['/new-lead']" [queryParams]="{ lead: lead.id }">
+      <ion-card-title>
+        <ion-avatar>
+          {{(lead.customerName)? lead.customerName[0]:''}}
+        </ion-avatar>
+        <ion-label>{{lead.customerName}}</ion-label>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <span style="float: left;">
+        <ion-icon name="location-outline"></ion-icon>
+        {{lead.city}}
+      </span>
+      <span style="float: right;" (click)="launchDialer(lead.mobileNo)" *ngIf="lead.mobileNo">
+        <ion-icon name="call-outline"></ion-icon>
+        {{lead.mobileNo}}
+      </span>
+      <span style="float: right;" *ngIf="!lead.mobileNo">
+        <ion-icon name="call-outline"></ion-icon>
+        {{lead.mobileNo}}
+      </span>
+      <span style="float: left;">
+        <ion-icon name="mail-outline"></ion-icon>
+        {{lead.mailId}}
+      </span>
+      <span style="float: right;">
+        <ion-icon name="person-outline"></ion-icon>
+        {{lead.leadAssigned}}
+      </span>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

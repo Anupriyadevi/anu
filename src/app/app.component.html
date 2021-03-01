@@ -1,0 +1,102 @@
+<ion-app >
+
+  <!-- <ion-split-pane contentId="main-content"> -->
+  <ion-menu contentId="main-content" type="overlay" > 
+    <ion-content><span>Hi {{this.name}},</span>
+      <ion-list id="inbox-list">
+        <ion-toolbar>
+          <ion-img src="assets/images/smm_logo.png"></ion-img>
+          <ion-list-header>SMM EQUIPMENTS</ion-list-header>
+        </ion-toolbar>
+        <div *ngFor="let p of appPages">
+          <ion-menu-toggle *ngIf="p.url">
+            <ion-item [routerLink]="[p.url]" lines="none"  (click)="checklogout(p.url)" routerDirection="root" routerLinkActive="active"
+              detail="false">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle > 
+          <ion-item button  *ngIf="p.children?.length > 0" (click)="p.open = !p.open" [class.active-parent]="p.open"
+            detail="false" lines="none">
+            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+          <div *ngIf="p.open">
+            <ion-menu-toggle  auto-hide="false">
+              <ion-item  class="sub-item" detail="false" *ngFor="let sub of p.children" [routerLink]="[sub.url]"
+                lines="none" routerDirection="root" routerLinkActive="active">
+                <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
+                <!-- <ion-icon name="arrow-forward"></ion-icon> -->
+                <ion-label>{{sub.title}}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+
+
+
+          </div>
+          <!--           
+          <div *ngFor="let p of appPages; let i = index">
+          <ion-menu-toggle  auto-hide="false" >
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+              <ion-list>
+                <ion-item *ngFor="let sub of p.subList" text-wrap>
+                  {{t.title}}
+                </ion-item>
+              </ion-list>
+            </ion-item>
+          </ion-menu-toggle> -->
+          <!-- <ion-item button *ngIf="p.children?.length > 0">
+
+          </ion-item> -->
+          <!-- <ion-list *ngIf = "p.open">
+            <ion-menu-toggle auto-hide="false" >
+              <ion-item (click)="selectedIndex = i"  routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list> -->
+        </div>
+      </ion-list>
+
+      <!-- <ion-list id="labels-list">
+          <ion-list-header>Labels</ion-list-header>
+
+          <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </ion-item>
+        </ion-list> -->
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  <!-- </ion-split-pane> -->
+  <!-- <div *ngIf='!login'> -->
+  <!-- <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <h4>Login Form</h4>
+        </div>
+        <div padding>
+          <ion-item>
+            <ion-input type="text" placeholder="Username"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-input type="password" placeholder="Password"></ion-input>
+          </ion-item>
+        </div>
+  
+        <div padding>
+          <ion-button size="large" href="/touchid" expand="block">Login</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+  <!-- </div> -->
+</ion-app>

@@ -1,0 +1,37 @@
+rating {
+    
+    width: 100%;
+    ion-icon {
+      color: gray;
+  
+      &.filled {
+        color: #ffb400;
+      }
+    }
+  }
+
+.btn {
+    margin: 10px;
+    text-align: center;
+  }
+
+.warning{
+  color: red;
+}
+
+.validator-error {
+  font-size: 13px;
+  color: red;
+  padding-left: 17px;
+}
+
+
+
+.header {
+  width: 3rem;
+  float: right;
+  height: 3rem;
+}
+// ion-item.ion-invalid.ion-touched{
+// 	border-bottom: 2px solid var(--ion-color-danger) !important;
+// }

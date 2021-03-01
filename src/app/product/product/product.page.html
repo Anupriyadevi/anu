@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-img class="header" slot="end" src="assets/images/smm_logo.png"></ion-img>
+    <ion-title>Products</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let equipment of equipments">
+    <ion-card-header>
+      <ion-card-title>{{equipment.Title}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-img src="assets/images/{{equipment.img}}"></ion-img>
+      <!-- <span *ngIf="!equipment.showMore">
+        
+      </span> -->
+      <span *ngIf="equipment.showMore">
+        {{equipment.desc}}
+      </span>
+      <a (click)="equipment.showMore = !equipment.showMore"> <span [innerHtml]="equipment.showMore ? 'Hide' : 'Show'">
+        </span> description
+      </a>
+      <!-- <span *ngIf="!equipment.showMore">{{equipment.desc}}</span> -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<!-- <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">head</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong class="capitalize">head</strong>
+    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div>
+</ion-content> -->

@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-badge color="success" slot="end"> {{count}} Customer(s)</ion-badge>
+    <ion-title>Customers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-card *ngFor="let customer of customers; let i = index">
+  <ion-card-header>
+    <ion-card-title>
+      <ion-avatar >
+       
+      </ion-avatar>  <ion-label>{{customer.customerName}}</ion-label>
+    </ion-card-title>
+    <ion-icon name="chevron-down-outline" (click)='view(i)'></ion-icon>
+  </ion-card-header>
+  <ion-card-content *ngIf= customer?.open>
+      <span style="float: left;">
+        <ion-icon name="location-outline"></ion-icon>
+        {{customer.customerLocation}}
+      </span>
+      <span style="float: right;">
+        <ion-icon name="call-outline"></ion-icon>
+        {{customer.mobileNo}}
+      </span>
+      <span style="float: left;">
+        <ion-icon name="mail-outline"></ion-icon>
+        {{customer.mailId}}
+      </span>
+      
+      <span >
+        product prchased:
+        <ion-icon name="person-outline"></ion-icon>
+        {{customer.productsOrdered}}
+      </span>
+  </ion-card-content>
+ 
+</ion-card> -->
+
+  <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar>
+  <ion-list>
+    <div *ngFor="let customer of customers; let i = index">
+
+      <ion-item class="contact">
+        <ion-avatar>
+          <img src="assets/images/avatar.svg">
+        </ion-avatar>
+        <ion-label style="padding-left: 11px;">
+          <h3>{{customer.customerName}}</h3>
+          <p> {{customer.companyName}}</p>
+        </ion-label>
+
+        <ion-icon *ngIf=!customer.open name="chevron-down-outline" (click)='view(i)'></ion-icon>
+        <ion-icon *ngIf=customer.open name="chevron-up-outline" (click)='viewtoggle(i)'></ion-icon>
+      </ion-item>
+      <ion-item *ngIf=customer?.open>
+        <ion-label>
+          <p>Address : {{customer.city}} </p>
+          <p>product purchased : {{customer.productsOrdered}} </p>
+          <p>Quantity : {{customer.quantity}} </p>
+          <p>service Due : {{customer.serviceDue | date}} </p>
+          <p *ngIf='customer.mobileNo' (click)="launchDialer(customer.mobileNo)">contact : {{customer.mobileNo}} </p>
+          <p *ngIf='!customer.mobileNo'>contact : {{customer.mobileNo}} </p>
+          <a style="float:right" [routerLink]="['/customerdetails']"
+            [queryParams]="{ id: customer.id, serviceDue: customer.serviceDue }">view more</a>
+        </ion-label>
+      </ion-item>
+
+    </div>
+
+
+  </ion-list>
+
+</ion-content>
